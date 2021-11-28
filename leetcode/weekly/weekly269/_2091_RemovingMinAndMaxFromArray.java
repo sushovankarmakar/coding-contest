@@ -2,14 +2,22 @@ package weekly269;
 
 /**
  * https://leetcode.com/contest/weekly-contest-269/
+ * <p>
  * https://leetcode.com/problems/removing-minimum-and-maximum-from-array/
- *
+ * <p>
  * https://leetcode.com/problems/removing-minimum-and-maximum-from-array/discuss/1599848/JavaC%2B%2BPython-Straight-Forward-Solutions
  */
 
 public class _2091_RemovingMinAndMaxFromArray {
 
-  public int minimumDeletions(int[] nums) {
+  public static void main(String[] args) {
+    System.out.println(minimumDeletions(new int[]{2, 10, 7, 5, 4, 1, 8, 6})); //  5
+    System.out.println(minimumDeletions(new int[]{0, -4, 19, 1, 8, -2, -3, 5}));  // 3
+    System.out.println(minimumDeletions(new int[]{101})); // 1
+    System.out.println(minimumDeletions(new int[]{2, 10, 1, 3})); // 3
+  }
+
+  public static int minimumDeletions(int[] nums) {
 
     int n = nums.length;
 
@@ -40,7 +48,7 @@ public class _2091_RemovingMinAndMaxFromArray {
 
     int deleteFromRight = n - Math.min(minIndex, maxIndex); // Scenario 2
 
-    int deleteFromBothSides = ((1 + Math.min(minIndex, maxIndex)) + (n - Math.min(minIndex, maxIndex)));  // Scenario 3
+    int deleteFromBothSides = ((1 + Math.min(minIndex, maxIndex)) + (n - Math.max(minIndex, maxIndex)));  // Scenario 3
 
     return Math.min(deleteFromBothSides, Math.min(deleteFromLeft, deleteFromRight));
   }
